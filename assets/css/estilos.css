@@ -1,0 +1,274 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+
+
+/* header{
+  position: sticky;
+  left: 0;
+  top: 0;
+ width: 100%;
+} */
+
+#tituloH1 {
+  display: flex;
+  justify-content: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #198754;
+  /* color:#212529; */
+  font-size: 50px;
+  
+
+
+}
+.navbar{
+  padding-bottom: 70px;
+  padding-top:70px;
+  background-color:   #212529;
+  padding-right: 20px;
+  margin-bottom: 20px;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+    color: #198754; }
+  
+  .navbar .navbar-nav .nav-item {
+    position: relative; }
+  
+  .navbar .navbar-nav .nav-item::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: #198754;
+    ;
+    width: 0%;
+    content: "";
+    height: 4px;
+    transition: all 0.5s; }
+  
+  .navbar .navbar-nav .nav-item:hover::after {
+    width: 70%; }
+
+ 
+  /* .navbar-dark{
+   background-color:   #212529;
+    
+    
+  } */
+
+
+        .btn {
+           
+            padding: 10px 30px;
+            border: 0;
+            border-radius: 5px;
+            margin: 8px;
+            background-color: hwb(0 30% 69%);
+            border-color: rgb(0, 0, 0); }
+          
+          
+.btn:hover {
+    background-color:#09e014; }
+
+
+    .iconoCarrito{
+
+        color:#09e014;
+        display: flex;
+        
+    }
+    .iconoCarrito:hover{
+
+        color: hwb(0 30% 69%);
+
+        
+    }
+  
+
+
+.card {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    align-items: center;
+    padding-right: 0;
+    margin: 50px;   /*separacion entre cards */
+
+}
+
+
+/*acomdar contenido de cards y modal carrito /////////////////////////////*/
+.card-body{
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+}
+
+#precioTotal{
+    display: flex;
+    justify-content: center;
+}
+
+
+/* .card-title {
+    display: flex;
+    justify-content: center;
+}
+
+.precioCard {
+    display: flex;
+    justify-content: center;
+}
+
+.tipoCervCard {
+    display: flex;
+    justify-content: center;
+}
+
+.trash{
+    display: flex;
+    justify-content: center;
+} */
+
+
+/*acomdar contenido de cards ////////////////////////*/
+
+
+
+
+#productos {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.fondoBody {
+    /* background-color: #198754; */
+    background-color: hsla(0, 3%, 6%, 0.753);
+    background-image: url(../img/Fondos\ de\ pantalla\ -\ Cerveza\ HD.jpg);
+    /* background-size: cover; */
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+
+
+
+.buscarCatalogo{
+    display:flex;
+    justify-content: flex-end;
+    margin-bottom:20px;
+    
+ 
+   
+  
+}
+.buscarCerv {
+
+    display: flex;
+    justify-content: start;
+      /* width: 100%; */
+     margin-bottom: 20px; 
+     padding-left: 10px;
+
+}
+
+.grid-Buscar{
+  /* position: fixed; */
+  /* position: sticky; */
+    display: grid;
+    grid-template-columns: repeat( 2, 1fr);
+    grid-template-rows: 2fr;
+    grid-column-gap: 11px;
+    grid-row-gap: px;
+    flex-wrap: wrap;
+/* margin-bottom: 50px;
+    padding-top: 50px; */
+    }
+
+    .grid-Buscar2{
+  
+      display: grid;
+grid-template-columns: repeat(4, 1fr);
+grid-template-rows: repeat(2, 1fr);
+grid-column-gap: 11px;
+grid-row-gap: 11px;
+      }
+  
+
+
+
+.tarjetas{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+
+
+#imputCerveza{
+    width: 30%;
+    margin-top: 8px;
+    margin-left: 8px;
+    margin-bottom: 8px;
+}
+
+
+.btn-donate {
+    --clr-font-main: hsla(0 0% 20% / 100);
+    --btn-bg-1:  black;
+    --btn-bg-2: rgba(7, 8, 7, 0.384);
+    --btn-bg-color: hsla(360 100% 100% / 1);
+    --radii: 0.5em;
+    cursor: pointer;
+    padding: 0.1em 1em;
+    min-width: 120px;
+    min-height: 44px;
+    font-size: var(--size, 1rem);
+    font-family: "Segoe UI", system-ui, sans-serif;
+    font-weight: 500;
+    transition: 0.8s;
+    background-size: 280% auto;
+    background-image: linear-gradient(325deg, var(--btn-bg-2) 0%, var(--btn-bg-1) 55%, var(--btn-bg-2) 90%);
+    border: none;
+    border-radius: var(--radii);
+    color: var(--btn-bg-color);
+    box-shadow: 0px 5px 5px hsla(123, 96%, 32%, 0.877), 0px 5px 5px -1px rgba(24, 59, 24, 0.25), inset 4px 4px 8px rgba(7, 15, 4, 0.5), inset -4px -4px 8px #223a21ee;
+  }
+  
+  .btn-donate:hover {
+    background-position: right top;
+  }
+  
+  .btn-donate:is(:focus, :focus-within,:active) {
+    outline: none;
+    box-shadow: 0 0 0 10px var(--btn-bg-color), 0 0 0 6px var(--btn-bg-2);
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .btn-donate {
+      transition: linear;
+    }
+  }
+  
+  #modal-body{
+   
+  
+
+    background-color: #a04917;
+
+  }
+
+  .modal-content{
+background-color: #09e014;
+
+   
+
+  }
