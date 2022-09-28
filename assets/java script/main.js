@@ -107,14 +107,17 @@ function ocultarCatalogo(){
     divCervezas.innerHTML = ""
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////preventdefault investigar
+///////////////////////////////////////////////////preventdefault investigar
 
+
+/////////////////////////////////////////////////
 function buscar() {
   ocultarCatalogo();
-  let imputCerv = document.getElementById("imputCerveza").value;
   
+  let inputCerv = document.getElementById("imputCerveza").value;
+
    let buscarCerv = deposito.filter(
-    (cervesa) => cervesa.tipo.toLowerCase() == imputCerv.toLowerCase() || cervesa.marca.toLowerCase() == imputCerv.toLowerCase() || cervesa.formato.toLowerCase() == imputCerv.toLowerCase() );
+    (cervesa) => cervesa.tipo.toLowerCase() == inputCerv.toLowerCase() || cervesa.marca.toLowerCase() == inputCerv.toLowerCase() || cervesa.formato.toLowerCase() == inputCerv.toLowerCase() );
 
   //let buscarCerv = deposito.filter( (cervesa) => cervesa.tipo.toLowerCase().includes(imputCerv.value.toLowerCase()))
 
@@ -122,9 +125,11 @@ function buscar() {
   
  
   if (buscarCerv == 0 ) {
-    alert("No hay resultados para su busqueda");
+    Swal.fire('No hay resultados para su busqueda')
+    // alert("No hay resultados para su busqueda");
     //imputCerv.value =""
-  } else {
+  } 
+  else {
     //alert("Puede visualizar  el resultado de su busqueda en la consola.");
     console.log(`El resultado es el siguiente:`);
     console.log(buscarCerv);
@@ -140,7 +145,9 @@ function buscar() {
 
 
 
-let btnMostrarCatalogo2 = document.getElementById("verCatalogo2")
+let btnMostrarCatalogo2 = document.getElementById("verBusqueda")
+
+
     btnMostrarCatalogo2.addEventListener("click", ()=>{
         mostrarCatalogo(deposito)
     })
@@ -150,12 +157,11 @@ let btnMostrarCatalogo2 = document.getElementById("verCatalogo2")
 let btnOcultarCatalogo = document.getElementById("ocultarCatalogo")
     btnOcultarCatalogo.onclick = ocultarCatalogo
 
-// let btnBuscar1 = document.getElementById("btnBuscarM")
-//if (e.keyCode === 13 imputCerveza
-// btnBuscar1.onclick = buscarXmarca 
 
 let btnBuscar2 = document.getElementById("btnBuscarT")
     btnBuscar2.onclick =  buscar
+
+
 
 
     let botonCarrito = document.getElementById("botonCarrito")
