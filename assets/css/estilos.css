@@ -25,8 +25,8 @@
 
 }
 .navbar{
-  padding-bottom: 70px;
-  padding-top:70px;
+  padding-bottom: 50px;
+  padding-top:50px;
   background-color:   #212529;
   padding-right: 20px;
   margin-bottom: 20px;
@@ -72,7 +72,7 @@
             border-color: rgb(0, 0, 0); }
           
           
-.btn:hover {
+.btnCarrito:hover {
     background-color:#09e014; }
 
 
@@ -144,7 +144,7 @@
 #productos {
     display: flex;
     justify-content: center;
-    margin-top: 100px;
+    /* margin-top: 5px; */
 }
 
 .fondoBody {
@@ -258,6 +258,21 @@ grid-row-gap: 11px;
     }
   }
   
+
+  @media (max-width: 932px) {
+    .grid-Buscar{
+     
+        display: grid;
+        grid-template-columns: repeat( 1, 1fr);
+        grid-template-rows: 2fr;
+        grid-column-gap: 11px;
+        grid-row-gap: px;
+        flex-wrap: wrap;
+        justify-items: center;
+        }
+  
+  }
+
   #modal-body{
    
   
