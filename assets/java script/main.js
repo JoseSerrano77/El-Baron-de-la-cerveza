@@ -165,6 +165,7 @@ let btnBuscar2 = document.getElementById("btnBuscarT")
 
 
     let botonCarrito = document.getElementById("botonCarrito")
+    carritoDeCompras = JSON.parse(localStorage.getItem("carritoDeCompras"))
     botonCarrito.addEventListener("click",()=>{
       cargarProductosCarrito(carritoDeCompras)
     })
