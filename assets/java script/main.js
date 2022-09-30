@@ -45,7 +45,7 @@ class Cerveza {
   
 
 /////INICIALIZACION ARRAY PARA GUARDAR PRODUCTOS EN EL CARRITO////////////////////////
-  let carritoDeCompras = []
+  let miCarrito = []
 
 
 
@@ -58,7 +58,26 @@ class Cerveza {
 
   let divCervezas = document.getElementById("productos")
 
-//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+function agregarCarrito(array){
+  miCarrito.push(array)
+console.log(miCarrito)
+
+localStorage.setItem("miCarrito",JSON.stringify(miCarrito)) /////////////JSON///////////
+  console.log(miCarrito); //OK
+
+}
+
+
+function ocultarCatalogo(){
+    divCervezas.innerHTML = ""
+}
+
+///////////////////////////////////////////////////preventdefault investigar
+
+
 function mostrarCatalogo(array){
     
     divCervezas.innerHTML = ""
@@ -92,22 +111,6 @@ function mostrarCatalogo(array){
 
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////
-function agregarCarrito(array){
-  carritoDeCompras.push(array)
-console.log(carritoDeCompras)
-
-localStorage.setItem("carritoDeCompras",JSON.stringify(carritoDeCompras)) /////////////JSON///////////
-  console.log(carritoDeCompras); //OK
-
-}
-
-
-function ocultarCatalogo(){
-    divCervezas.innerHTML = ""
-}
-
-///////////////////////////////////////////////////preventdefault investigar
 
 
 /////////////////////////////////////////////////
@@ -161,21 +164,19 @@ let btnOcultarCatalogo = document.getElementById("ocultarCatalogo")
 let btnBuscar2 = document.getElementById("btnBuscarT")
     btnBuscar2.onclick =  buscar
 
-
-
-
     let botonCarrito = document.getElementById("botonCarrito")
-    carritoDeCompras = JSON.parse(localStorage.getItem("carritoDeCompras"))
+    miCarrito= JSON.parse(localStorage.getItem("miCarrito"))
+
     botonCarrito.addEventListener("click",()=>{
-      cargarProductosCarrito(carritoDeCompras)
+      cargarProductosCarrito(miCarrito)
     })
 
     
     let botonFinalizarCompra = document.getElementById("botonFinalizarCompra")
     
-
-   
     let modalBody = document.getElementById("modal-body")
+
+    
 
 //////////////////////FUNCION-PARA CARGAR ELEMENTOS AL CARRITO////////////////////////////////////////////////////////////////////////////
 
@@ -206,13 +207,15 @@ let btnBuscar2 = document.getElementById("btnBuscarT")
       let id = productoCarrito.id
    
       btnEliminar.addEventListener("click", ()=>{
-         let productosIndex = carritoDeCompras.findIndex(element => element.id == id)
+         let productosIndex = miCarrito.findIndex(element => element.id == id)
      
-         carritoDeCompras.splice( productosIndex, 1)
+         miCarrito.splice( productosIndex, 1)
          console.log(productosIndex)
-         localStorage.setItem("carritoDeCompras",JSON.stringify(carritoDeCompras))
-         console.log(carritoDeCompras)
-         cargarProductosCarrito(carritoDeCompras)
+
+         localStorage.setItem("miCarrito",JSON.stringify(miCarrito))
+         console.log(miCarrito)
+        //  alert ("ok")
+         cargarProductosCarrito(miCarrito)
       })
          
          
