@@ -45,8 +45,8 @@ class Cerveza {
   
 
 /////INICIALIZACION ARRAY PARA GUARDAR PRODUCTOS EN EL CARRITO////////////////////////
-  let miCarrito = []
-
+////////// UTILIZO OPERADOR OR/////////////////CAPTURA O ASIGNA ARRAY VACIO SI ES FALSY
+  let miCarrito = JSON.parse(localStorage.getItem("miCarrito")) || []
 
 
   /////INICIALIZACION ARRAY DEPOSITO////////////////////////
@@ -124,19 +124,15 @@ function buscar() {
 
   //let buscarCerv = deposito.filter( (cervesa) => cervesa.tipo.toLowerCase().includes(imputCerv.value.toLowerCase()))
 
-  console.log(buscarCerv);
   
- 
   if (buscarCerv == 0 ) {
     Swal.fire('No hay resultados para su busqueda')
-    // alert("No hay resultados para su busqueda");
-    //imputCerv.value =""
+    
   } 
   else {
-    //alert("Puede visualizar  el resultado de su busqueda en la consola.");
-    console.log(`El resultado es el siguiente:`);
-    console.log(buscarCerv);
-
+   
+    // console.log(`El resultado es el siguiente:`);
+    // console.log(buscarCerv);
     for (let tipoEncontrado of buscarCerv) {
       tipoEncontrado.infoCerveza();///////se muestra en consola///
     }
@@ -165,7 +161,7 @@ let btnBuscar2 = document.getElementById("btnBuscarT")
     btnBuscar2.onclick =  buscar
 
     let botonCarrito = document.getElementById("botonCarrito")
-    miCarrito= JSON.parse(localStorage.getItem("miCarrito"))
+   
 
     botonCarrito.addEventListener("click",()=>{
       cargarProductosCarrito(miCarrito)
@@ -231,27 +227,22 @@ let btnBuscar2 = document.getElementById("btnBuscarT")
 
 
       let parrafoCompra = document.getElementById('precioTotal')
+
       ////////////////////////CALCUALAR TOTAL CARRITO/////////////////
       function totalCarrito (array){
         let acumCompra = 0
-        // console.log(array.length)
-        // alert(`cantidad ${array.length}`)
+        
         acumCompra = array.reduce((acumCompra,productoCarrito)=>{
-          return acumCompra + productoCarrito.precio
+          return acumCompra + productoCarrito.precio}, 0)////EMPIEZA DESDE 0
 
-        }, 0)////EMPIEZA DESDE 0
-
-        // console.log(`el total de la compra es: ${acumCompra}`)
-
-        if(acumCompra == 0){
-          parrafoCompra.innerHTML = `<strong>Tu carrito en este momento está vacío.</strong>`
-        }
-        else{
-        parrafoCompra.innerHTML = `<strong>El total de la compra es: $${acumCompra}</strong>`
+      acumCompra == 0?  parrafoCompra.innerHTML = `<strong>Tu carrito en este momento está vacío.</strong>`: parrafoCompra.innerHTML = `<strong>El total de la compra es: $${acumCompra}</strong>`
+      //   if(acumCompra == 0){
+      //     parrafoCompra.innerHTML = `<strong>Tu carrito en este momento está vacío.</strong>`
+      //   }
+      //   else{
+      //   parrafoCompra.innerHTML = `<strong>El total de la compra es: $${acumCompra}</strong>`
        
-      }
-
-
+      // }
       } 
 
      
