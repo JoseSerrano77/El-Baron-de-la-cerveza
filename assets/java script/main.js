@@ -63,10 +63,10 @@ class Cerveza {
 /////////////////////////////////////////////////////////////////////////////////////////////
 function agregarCarrito(array){
   miCarrito.push(array)
-console.log(miCarrito)
+// console.log(miCarrito)
 
 localStorage.setItem("miCarrito",JSON.stringify(miCarrito)) /////////////JSON///////////
-  console.log(miCarrito); //OK
+  // console.log(miCarrito); //OK
 
 }
 
@@ -95,7 +95,7 @@ function mostrarCatalogo(array){
         divCervezas.append(nuevaCerveza)  
 
         let btnAgregarCarrito = document.getElementById(`agregarBtn${marca.id}`)/// de esta manera logramos que cada button tenga si id correspondiente.
-                   console.log(btnAgregarCarrito)
+                  //  console.log(btnAgregarCarrito)
                    
         btnAgregarCarrito.addEventListener("click", () =>{
           console.log(marca)
@@ -118,6 +118,7 @@ function buscar() {
   ocultarCatalogo();
   
   let inputCerv = document.getElementById("imputCerveza").value;
+  
 
    let buscarCerv = deposito.filter(
     (cervesa) => cervesa.tipo.toLowerCase() == inputCerv.toLowerCase() || cervesa.marca.toLowerCase() == inputCerv.toLowerCase() || cervesa.formato.toLowerCase() == inputCerv.toLowerCase() );
@@ -127,7 +128,7 @@ function buscar() {
   
   if (buscarCerv == 0 ) {
     Swal.fire('No hay resultados para su busqueda')
-    
+   
   } 
   else {
    
@@ -158,7 +159,11 @@ let btnOcultarCatalogo = document.getElementById("ocultarCatalogo")
 
 
 let btnBuscar2 = document.getElementById("btnBuscarT")
-    btnBuscar2.onclick =  buscar
+    // btnBuscar2.onclick =  buscar
+    btnBuscar2.onclick = (e)=>{
+      e.preventDefault()
+      buscar()
+    }
 
     let botonCarrito = document.getElementById("botonCarrito")
    
@@ -216,11 +221,7 @@ let btnBuscar2 = document.getElementById("btnBuscarT")
          
          
       })
-      // alert(`cantidad ${array.length}`)/////////  puedo usar un modal para preguntar si esta seguro que desea eliminar
-     
-      // let itemsCarrito = document.getElementById("iconoCArrito")
       
-      // console.log(itemsCarrito)
       totalCarrito(array) /// Le asignamos el array del carrito
       }
 ////////////////////// FIN-FUNCION-PARA CARGAR ELEMENTOS AL CARRITO////////////////////////////////////////////////////////////////////////////
