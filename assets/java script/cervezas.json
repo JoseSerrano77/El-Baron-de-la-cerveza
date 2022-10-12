@@ -1,0 +1,120 @@
+[
+    {
+        "id": "H1",
+        "marca": "HeinekenPrueba",
+        "tipo": "Lager",
+        "formato": "porron",
+        "volumen": "330ml",
+        "precio": 220,
+        "imagen": "./assets/img/HeinekenLager473.jpg"
+    },
+    {
+        "id": "H2",
+        "marca": "Heineken",
+        "tipo": "Lager",
+        "formato": "lata",
+        "volumen": "473ml",
+        "precio": 260,
+        "imagen": "HeinekenLager473.jpg"
+    },
+     
+    {
+        "id": "H3",
+        "marca": "Grolsch",
+        "tipo": "Lager",
+        "formato": "lata",
+        "volumen": "710ml",
+        "precio": 420,
+        "imagen": "HeinekenLager710.jpg"
+    },
+
+    {
+        "id": "G1",
+        "marca": "Grolsch",
+        "tipo": "Ipa",
+        "formato": "lata",
+        "volumen": "473ml",
+        "precio": 280,
+        "imagen": "grolschlPilsnerr473.jpg"
+    },
+
+    {
+        "id": "G2",
+        "marca": "Heineken",
+        "tipo": "Lager",
+        "formato": "porron",
+        "volumen": "450ml",
+        "precio": 500,
+        "imagen": "grolschlPilsnerr473.jpg"
+    },
+
+    {
+        "id": "I1",
+        "marca": "Imperial Golden",
+        "tipo": "Lager",
+        "formato": "lata",
+        "volumen": "710ml",
+        "precio": 220,
+        "imagen": "imperialgolden710.jpg"
+    },
+
+    {
+        "id": "I2",
+        "marca": "Imperial",
+        "tipo": "Lager",
+        "formato": "lata",
+        "volumen": "473ml",
+        "precio": 220,
+        "imagen": "imperialLager473.jpg"
+    },
+
+    {
+        "id": "I3",
+        "marca": "Imperial",
+        "tipo": "Ipa",
+        "formato": "lata",
+        "volumen": "473ml",
+        "precio": 230,
+        "imagen": "imperialIPA473.jpg"
+    },
+
+    {
+        "id": "I4",
+        "marca": "Imperial",
+        "tipo": "Apa",
+        "formato": "lata",
+        "volumen": "473ml",
+        "precio": 220,
+        "imagen": "imperialApa473.jpg"
+    },
+
+    {
+        "id": "I5",
+        "marca": "Imperial",
+        "tipo": "amberLager",
+        "formato": "lata",
+        "volumen": "473ml",
+        "precio": 220,
+        "imagen": "imperialAmberLager2473.jpg"
+    },
+
+    {
+        "id": "I6",
+        "marca": "Imperial",
+        "tipo": "Roja",
+        "formato": "lata",
+        "volumen": "473ml",
+        "precio": 220,
+        "imagen": "imperialRoja473.jpg"
+    },
+
+    {
+        "id": "I7",
+        "marca": "Imperial",
+        "tipo": "Cream Stout",
+        "formato": "lata",
+        "volumen": "473ml",
+        "precio": 250,
+        "imagen": "imperialCreamStout473.jpg"
+    }
+]
