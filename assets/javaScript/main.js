@@ -1,37 +1,5 @@
 
 
-//////////////////OBJETOS////////////////////////////
-
-// const cervesa1 = new Cerveza("H1", "Heineken", "Lager", "porron", "330ml", 220,"HeinekenLager473.jpg");
-
-// const cervesa2 = new Cerveza("H2", "Heineken", "Lager", "lata", "473ml", 260,"HeinekenLager473.jpg");
-
-// const cervesa3 = new Cerveza("H3", "Heineken", "Lager", "lata", "710ml", 420,"HeinekenLager710.jpg");
-
-// const cervesa4 = new Cerveza("G1", "Grolsch", "Ipa", "lata", "473ml", 280,"grolschlPilsnerr473.jpg"); ///lager
-
-// const cervesa5 = new Cerveza("G2", "Grolsch", "Lager", "porron", "450", 1540,"grolschlPilsnerr473.jpg");
-
-// const cervesa6 = new Cerveza( "I1", "Imperial Golden", "lager","lata", "710",220,"imperialgolden710.jpg");
-
-// const cervesa7 = new Cerveza("I2", "Imperial", "Lager", "lata", "473", 220,"imperialLager473.jpg");
-
-// const cervesa8 = new Cerveza("I3", "Imperial", "Ipa", "lata", "473", 230,"imperialIPA473.jpg");
-
-// const cervesa9 = new Cerveza("I4", "Imperial ", "Apa", "lata", "473", 220,"imperialApa473.jpg");
-
-// const cervesa10 = new Cerveza("I5","Imperial", "amberLager", "lata","473",220,"imperialAmberLager2473.jpg");
-
-// const cervesa11 = new Cerveza("I6", "Imperial", "Roja", "lata", "473", 220,"imperialRoja473.jpg");
-
-// const cervesa12 = new Cerveza("I7","Imperial","Cream Stout","lata","473", 250,"imperialCreamStout473.jpg");
-
-
-
-
-
-
-
 let divCervezas = document.getElementById("productos")
 
 ///FUNCION MOSTRAR CATALOGO
@@ -98,7 +66,7 @@ function agregarCarrito(array){
   ///FUNCION OCULTAR CATALOGO
   function ocultarCatalogo(){
     divCervezas.innerHTML = ""
-  }////////////////////////////////////////////////preventdefault investigar
+  }
 
 
 //FUNCION PARA BUSCAR PRODUCTOS
@@ -108,9 +76,7 @@ let inputCerv = document.getElementById("imputCerveza").value;
  let buscarCerv = deposito.filter(
   (cervesa) => cervesa.tipo.toLowerCase().includes (inputCerv.toLowerCase()) || cervesa.marca.toLowerCase().includes (inputCerv.toLowerCase()) 
   || cervesa.formato.toLowerCase().includes (inputCerv.toLowerCase()) );
-  // (cervesa) => cervesa.tipo.toLowerCase() == inputCerv.toLowerCase() || cervesa.marca.toLowerCase() == inputCerv.toLowerCase() || cervesa.formato.toLowerCase() == inputCerv.toLowerCase() );
-//let buscarCerv = deposito.filter( (cervesa) => cervesa.tipo.toLowerCase().includes(imputCerv.value.toLowerCase()))
-
+ 
 if (buscarCerv == 0 ) {
 
   Swal.fire({
@@ -120,14 +86,12 @@ if (buscarCerv == 0 ) {
     confirmButtonText:"Volver",
     confirmButtonColor: '#212529',
      width:` 35em`,
-    
-  
+     
   })
- 
+  ocultarCatalogo(deposito)
 } 
 else{
-  // console.log(`El resultado es el siguiente:`);
-  // console.log(buscarCerv);
+  
   for (let tipoEncontrado of buscarCerv) {
     tipoEncontrado.infoCerveza();///////se muestra en consola///
   }
@@ -224,13 +188,8 @@ let btnBuscar2 = document.getElementById("btnBuscarT")
         return acumCompra + productoCarrito.precio}, 0)////EMPIEZA DESDE 0
 
     acumCompra == 0?  parrafoCompra.innerHTML = `<strong>Tu carrito en este momento está vacío.</strong>`: parrafoCompra.innerHTML = `<strong>El total de la compra es: $${acumCompra}</strong>`
-    //   if(acumCompra == 0){
-    //     parrafoCompra.innerHTML = `<strong>Tu carrito en este momento está vacío.</strong>`
-    //   }
-    //   else{
-    //   parrafoCompra.innerHTML = `<strong>El total de la compra es: $${acumCompra}</strong>`
-     
-    // }
+    
+    
     } 
 
 
