@@ -277,7 +277,7 @@ let btnBuscar2 = document.getElementById("btnBuscarT")
     //   }
     // }).showToast();
 
-    //LUXON
+    //LUXON/// 
    const DateTime = luxon.DateTime 
     // console.log (DateTime)
     const fechaAhora = DateTime.now()
