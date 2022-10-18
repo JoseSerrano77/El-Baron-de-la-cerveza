@@ -62,9 +62,10 @@
       </div> -->
         <div class="grid-Buscar">
                 <div container-fluid> 
-                    <form class="buscarCerv">
-                        <!-- <input class="btn btn-outline-success me-2 bg-dark col-5" type="button" name="enviar" value="Buscar"   onclick="buscarXtipo();"> -->
-                        <button id="btnBuscarT" class="btn btn-outline-success me-2 bg-dark " type="button" name="enviar"value="Buscar"> Buscar </button>
+                     <form onsubmit="return false;" class="buscarCerv"> <!--Agregue onsubmit="return false;" para que no me actualice el html con presiono enter-->
+                        <button id="btnBuscarT" class="btn btn-outline-success me-2 bg-dark "  type="submit" type="button" name="enviar"value="Buscar"> Buscar </button>
+                        <!-- Agregando type="submit"  al Button, me permitio realizar la busqueda apretando el btn o con Enter-->
+                        <!-- <input  id="btnBuscarT" type="submit" class="btn btn-outline-success me-2 bg-dark " type="button"  value="Buscar"></input>. -->
                         <input id="imputCerveza" class="form-control me-2  " type="search"   placeholder="Ingrese tipo/variedad de cerveza" aria-label="Search" style=" width: 326px;" >
                     </form>
                   </div>
@@ -123,8 +124,11 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <!-- Luxon -->
     <script src="https://cdn.jsdelivr.net/npm/luxon@2.3.0/build/global/luxon.min.js"></script>
-    <script src="./assets/javaScript/class.js"></script>
-    <script src="./assets/javaScript/main.js"></script>
+    <script src="./assets/javaScript/class.js"></script> 
+     <script src="./assets/javaScript/main.js"></script>
+    <!-- <!- <script src="./assets/javaScript/class.js"></script> -->
+    <!-- <script src="class.js"></script>
+    <script src="main.js"></script> -->
     <!-- <script src="./assets/img/HeinekenLager473.jpg"></script> -->
 
 

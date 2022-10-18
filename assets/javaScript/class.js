@@ -17,28 +17,29 @@ class Cerveza {
     }
   }
 
-   const deposito = []
+   let deposito = []
  
   
-const cargarTienda = async() =>{
+const cargarProductos = async() =>{
     const response = await fetch("./assets/javaScript/cervezas.json")
     const data = await response.json()
     console.log(data)
 
 
     for (let cerveza of data){
-        let productoNuevo = new Cerveza (cerveza.id, cerveza.marca, cerveza.tipo, cerveza.formato, cerveza.volumen, cerveza.precio)
+        let productoNuevo = new Cerveza (cerveza.id, cerveza.marca, cerveza.tipo, cerveza.formato, cerveza.volumen, cerveza.precio,cerveza.imagen)
         deposito.push(productoNuevo)
     }
     localStorage.setItem("deposito", JSON.stringify(deposito) )
     
 }
 
-cargarTienda()
+// cargarProductos()
 
 /////INICIALIZACION ARRAY PARA GUARDAR PRODUCTOS EN EL CARRITO////////////////////////
 let miCarrito = JSON.parse(localStorage.getItem("miCarrito")) || []
 
 
-localStorage.getItem("deposito") ? deposito = JSON.parse(localStorage.getItem("deposito")) : cargarTienda()
+localStorage.getItem("deposito") ? deposito = JSON.parse(localStorage.getItem("deposito")) : cargarProductos()
+
 

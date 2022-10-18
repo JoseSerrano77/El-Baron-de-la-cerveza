@@ -1,12 +1,12 @@
 [
     {
         "id": "H1",
-        "marca": "HeinekenPrueba",
+        "marca": "Heineken",
         "tipo": "Lager",
         "formato": "porron",
         "volumen": "330ml",
         "precio": 220,
-        "imagen": "./assets/img/HeinekenLager473.jpg"
+        "imagen": "HeinekenLager473.jpg"
     },
     {
         "id": "H2",

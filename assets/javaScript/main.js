@@ -9,10 +9,11 @@ function mostrarCatalogo(array){
   array.forEach((marca)=>{
       let nuevaCerveza = document.createElement("div")
       nuevaCerveza.innerHTML = `<div id="${marca.id}" class= "card " style="width: 18rem;">
-                                        <img class="card-img-top img-fluid" style="height: 250px;" src="./assets/img/${marca.imagen}" alt="${marca.marca} de ${marca.tipo}">
+                                        <img class="card-img-top img-fluid" style="height: 250px;" src="assets/img/${marca.imagen}" alt="${marca.marca} de ${marca.tipo}">
                                         <div class="card-body">                                   
                                             <h4 class="card-title ">${marca.marca}</h4>
                                             <p class="tipoCervCard">Tipo: ${marca.tipo}</p>
+                                            <p class="tipoCervCard">Volumen: ${marca.volumen}</p>
                                             <p class="precioCard ">Precio: $ ${marca.precio}</p>                                  
                                             <button id="agregarBtn${marca.id}" class="btn-donate" type="submit"   >Agregar al carrito</button>
                                         </div>
@@ -53,14 +54,7 @@ function mostrarCatalogo(array){
 }
 
 
-///FUNCION AGREGAR PRODUCTOS AL CARRITO
-function agregarCarrito(array){
-  miCarrito.push(array)
-  // console.log(miCarrito)
-  localStorage.setItem("miCarrito",JSON.stringify(miCarrito))
-  // console.log(miCarrito); //OK
-  
-  }
+
   
   
   ///FUNCION OCULTAR CATALOGO
@@ -72,12 +66,11 @@ function agregarCarrito(array){
 //FUNCION PARA BUSCAR PRODUCTOS
  function buscar() {
 // ocultarCatalogo();
-let inputCerv = document.getElementById("imputCerveza").value;
- let buscarCerv = deposito.filter(
-  (cervesa) => cervesa.tipo.toLowerCase().includes (inputCerv.toLowerCase()) || cervesa.marca.toLowerCase().includes (inputCerv.toLowerCase()) 
-  || cervesa.formato.toLowerCase().includes (inputCerv.toLowerCase()) );
+let inputCerv = document.getElementById("imputCerveza")
+ let buscarCerv = deposito.filter((cervesa) => cervesa.tipo.toLowerCase().includes(inputCerv.value.toLowerCase()) || cervesa.marca.toLowerCase().includes(inputCerv.value.toLowerCase()) 
+  || cervesa.formato.toLowerCase().includes (inputCerv.value.toLowerCase()) );
  
-if (buscarCerv == 0 ) {
+if (buscarCerv.length == 0 ) {
 
   Swal.fire({
 
@@ -92,14 +85,23 @@ if (buscarCerv == 0 ) {
 } 
 else{
   
-  for (let tipoEncontrado of buscarCerv) {
-    tipoEncontrado.infoCerveza();///////se muestra en consola///
-  }
-  mostrarCatalogo(buscarCerv)
+   for (let tipoEncontrado of buscarCerv) {
+    
+    //  tipoEncontrado.infoCerveza();///////se muestra en consola///
+    mostrarCatalogo(buscarCerv)
+   }
+  // mostrarCatalogo(buscarCerv)
 }
 }
 
+///BOTON BUSCAR
+let btnBuscar2 = document.getElementById("btnBuscarT")
+  //  btnBuscar2.onclick =  buscar()
 
+  btnBuscar2.addEventListener("click", ()=>{
+     buscar()
+})
+ 
 
 //BOTON MOSTRAR CATALOGO
 let btnMostrarCatalogo = document.getElementById("verBusqueda")
@@ -112,13 +114,7 @@ let btnMostrarCatalogo = document.getElementById("verBusqueda")
 let btnOcultarCatalogo = document.getElementById("ocultarCatalogo")
   btnOcultarCatalogo.onclick = ocultarCatalogo
 
-///BOTON BUSCAR
-let btnBuscar2 = document.getElementById("btnBuscarT")
-  // btnBuscar2.onclick =  buscar
-  btnBuscar2.onclick = (e)=>{
-    e.preventDefault()
-    buscar()
-  }
+
 
 
   ///BOTON MOSTRAR ELEMENTOS CARRITO
@@ -134,6 +130,16 @@ let btnBuscar2 = document.getElementById("btnBuscarT")
   let parrafoCompra = document.getElementById('precioTotal')
 
 
+
+///FUNCION AGREGAR PRODUCTOS AL CARRITO
+function agregarCarrito(array){
+  miCarrito.push(array)
+ 
+  localStorage.setItem("miCarrito",JSON.stringify(miCarrito))
+ 
+  }
+
+  
 ////FUNCION-PARA CARGAR ELEMENTOS AL CARRITO
   function cargarProductosCarrito(array){
    
@@ -207,4 +213,4 @@ let btnBuscar2 = document.getElementById("btnBuscarT")
       divFechaHoy.innerHTML= `${fecha}`
       
 
-      mostrarCatalogo(deposito)
+       mostrarCatalogo(deposito)
