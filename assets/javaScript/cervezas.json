@@ -6,7 +6,7 @@
         "formato": "porron",
         "volumen": "330ml",
         "precio": 220,
-        "imagen": "HeinekenLager473.jpg"
+        "imagen": "CervezaHeinekenRubiaPorron330.jpg"
     },
     {
         "id": "H2",
@@ -19,13 +19,13 @@
     },
      
     {
-        "id": "H3",
-        "marca": "Grolsch",
-        "tipo": "Lager",
+        "id": "K1",
+        "marca": "Kunstmann",
+        "tipo": "Ipa",
         "formato": "lata",
-        "volumen": "710ml",
-        "precio": 420,
-        "imagen": "HeinekenLager710.jpg"
+        "volumen": "470ml",
+        "precio": 500,
+        "imagen": "KunstmannSessionIpa470.jpg"
     },
 
     {
@@ -39,13 +39,13 @@
     },
 
     {
-        "id": "G2",
+        "id": "H3",
         "marca": "Heineken",
         "tipo": "Lager",
         "formato": "porron",
         "volumen": "450ml",
         "precio": 500,
-        "imagen": "grolschlPilsnerr473.jpg"
+        "imagen": "CervezaHeinekenRubiaPorron450.jpg"
     },
 
     {

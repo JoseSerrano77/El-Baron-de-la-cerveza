@@ -4,12 +4,12 @@ let divCervezas = document.getElementById("productos")
 
 ///FUNCION MOSTRAR CATALOGO
 function mostrarCatalogo(array){
-  
+ 
   divCervezas.innerHTML = ""
   array.forEach((marca)=>{
       let nuevaCerveza = document.createElement("div")
-      nuevaCerveza.innerHTML = `<div id="${marca.id}" class= "card " style="width: 18rem;">
-                                        <img class="card-img-top img-fluid" style="height: 250px;" src="assets/img/${marca.imagen}" alt="${marca.marca} de ${marca.tipo}">
+      nuevaCerveza.innerHTML = `<div id="${marca.id}" class= "card " style="width: 15rem;">
+                                        <img class="card-img-top img-fluid" style="height: 250px " src="assets/img/${marca.imagen}" alt="${marca.marca} de ${marca.tipo}">
                                         <div class="card-body">                                   
                                             <h4 class="card-title ">${marca.marca}</h4>
                                             <p class="tipoCervCard">Tipo: ${marca.tipo}</p>
@@ -28,29 +28,11 @@ function mostrarCatalogo(array){
         console.log(marca)
         agregarCarrito(marca)
 
-        // SWEETALERT
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'center-center',
-          showConfirmButton: false,
-          timer: 1000,
-          timerProgressBar: true,
-          
-          
-          
-          })
-          Toast.fire({
-          icon: 'success',
-          iconColor:`#198754`,
-          title: 'Producto agregado al carrito'
-          })
-  
-
       })
     
 
   })
-
+ 
 }
 
 
@@ -64,40 +46,38 @@ function mostrarCatalogo(array){
 
 
 //FUNCION PARA BUSCAR PRODUCTOS
- function buscar() {
-// ocultarCatalogo();
-let inputCerv = document.getElementById("imputCerveza")
- let buscarCerv = deposito.filter((cervesa) => cervesa.tipo.toLowerCase().includes(inputCerv.value.toLowerCase()) || cervesa.marca.toLowerCase().includes(inputCerv.value.toLowerCase()) 
-  || cervesa.formato.toLowerCase().includes (inputCerv.value.toLowerCase()) );
- 
-if (buscarCerv.length == 0 ) {
+      function buscar() {
+      // ocultarCatalogo();
+      let inputCerv = document.getElementById("imputCerveza").value;
+      let buscarCerv = deposito.filter((cervesa) => cervesa.tipo.toLowerCase().includes(inputCerv.toLowerCase()) || cervesa.marca.toLowerCase().includes(inputCerv.toLowerCase()) );
+      
+      if (buscarCerv.length == 0 ) {
 
-  Swal.fire({
+        Swal.fire({
 
-    title: "No hay resultado para su busqueda",
-    // themes: "dark",
-    confirmButtonText:"Volver",
-    confirmButtonColor: '#212529',
-     width:` 35em`,
-     
-  })
-  ocultarCatalogo(deposito)
-} 
-else{
-  
-   for (let tipoEncontrado of buscarCerv) {
-    
-    //  tipoEncontrado.infoCerveza();///////se muestra en consola///
-    mostrarCatalogo(buscarCerv)
-   }
-  // mostrarCatalogo(buscarCerv)
-}
-}
+                  title: "No hay resultado para su busqueda",
+                  // themes: "dark",
+                  confirmButtonText:"Volver",
+                  confirmButtonColor: '#212529',
+                  width:` 35em`,
+                  })
+        // ocultarCatalogo(deposito)
+        document.getElementById("imputCerveza").value= ""
+      } 
+      else{
+        
+        //  for (let tipoEncontrado of buscarCerv) {
+          
+          //  tipoEncontrado.infoCerveza();///////se muestra en consola///
+          mostrarCatalogo(buscarCerv)
+        //  }
+        
+      }
+      }
 
 ///BOTON BUSCAR
 let btnBuscar2 = document.getElementById("btnBuscarT")
   //  btnBuscar2.onclick =  buscar()
-
   btnBuscar2.addEventListener("click", ()=>{
      buscar()
 })
@@ -117,83 +97,177 @@ let btnOcultarCatalogo = document.getElementById("ocultarCatalogo")
 
 
 
-  ///BOTON MOSTRAR ELEMENTOS CARRITO
+
+///FUNCION AGREGAR PRODUCTOS AL STORAGE DEL CARRITO
+function agregarCarrito(array){
+ 
+    let cervezaAgregada = miCarrito.find((elem)=> (elem.id == array.id))
+ 
+    if(cervezaAgregada == undefined){
+      
+      miCarrito.push(array)
+       localStorage.setItem("miCarrito",JSON.stringify(miCarrito));
+       
+       const Toast = Swal.mixin({
+        toast: true,
+        position: 'center',
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        })
+        Toast.fire({
+        icon: 'success',
+        iconColor:`#198754`,
+        title: 'Producto agregado al carrito'
+        })
+
+        contadorCarrito.innerText = miCarrito.length 
+        // console.log(miCarrito.length )
+        botonCarrito.style.backgroundColor = "#09e014";
+        // carritoCounter();
+      }
+  
+      else{
+       
+          Swal.fire({
+              title: "Producto en Carrito",
+              text: `Este producto ya se encuentra en el carrito`,
+              icon: "info",
+              iconColor: '#198754',
+              timer:2500,
+              confirmButtonText:"Aceptar",
+              confirmButtonColor:  '#212529',
+              width:` 30em`,
+          })
+      }
+  }
+  
+  // }
+ 
+ 
+  
+  
+  // ///BOTON CARRITO
   let botonCarrito = document.getElementById("botonCarrito")
+  
   botonCarrito.addEventListener("click",()=>{
     cargarProductosCarrito(miCarrito)
   })
-
-  
-  //DOM
-  let botonFinalizarCompra = document.getElementById("botonFinalizarCompra")
-  let modalBody = document.getElementById("modal-body")
-  let parrafoCompra = document.getElementById('precioTotal')
-
-
-
-///FUNCION AGREGAR PRODUCTOS AL CARRITO
-function agregarCarrito(array){
-  miCarrito.push(array)
  
-  localStorage.setItem("miCarrito",JSON.stringify(miCarrito))
- 
-  }
+////FUNCION-PARA CARGAR ELEMENTOS DEL CARRITO
 
-  
-////FUNCION-PARA CARGAR ELEMENTOS AL CARRITO
+let modalBody = document.getElementById("modalCarrito")
+
+
   function cargarProductosCarrito(array){
-   
+    
     modalBody.innerHTML ="" //hace que empiece por defecto en cero, ya que lo vamos a apretar muchas veces
     array.forEach((productoCarrito)=>{ //por cada iteracion se va ir sumando al modalBody
-
+      // const {id, marca, tipo, formato, volumen, precio,imagen, contador} = productoCarrito
+      
       let cervezaEnCarrito = document.createElement("div")
-    
-      // modalBody.innerHTML +=`
       cervezaEnCarrito .innerHTML += `
-      <div class="card border-primary mb-3 " id ="productoCarrito${productoCarrito.id}" style="max-width: 540px;">
-          <img class="card-img-top" src="./assets/img/${productoCarrito.imagen}"alt="${productoCarrito.marca} de ${productoCarrito.tipo}">
-              <div class="card-body">
+      <div   id ="productoCarrito${productoCarrito.id}" >
+      <div class="parent">
+      <img  class="imgCerv" style="height: 200px " src="./assets/img/${productoCarrito.imagen}"alt="${productoCarrito.marca} de ${productoCarrito.tipo}">
+               <div class="card-body"> 
                 <h4 class="card-title">${productoCarrito.marca}</h4>
                 <p class="tipoCervCard"> Tipo: ${productoCarrito.tipo}</p> 
                 <p class="precioCard "> Precio: $${productoCarrito.precio}</p> 
+                
                 <button class= "btn btn-danger trash" id="botonEliminar${productoCarrito.id}"><i class="fas fa-trash-alt" > </i></button>
               </div>    
       
+       </div> 
        </div> `
-
+      
        modalBody.append(cervezaEnCarrito)
       
-      //BOTON ELIMINAR
-    let btnEliminar = document.getElementById(`botonEliminar${productoCarrito.id}`)
-    let id = productoCarrito.id
+                        //BOTON ELIMINAR
+                      let btnEliminar = document.getElementById(`botonEliminar${productoCarrito.id}`)
+                      let idCarrito = productoCarrito.id
      
-    ///ELIMINAR DE CARRITO
-    btnEliminar.addEventListener("click", ()=>{
-       let productosIndex = miCarrito.findIndex(element => element.id == id)
-       miCarrito.splice( productosIndex, 1)
-       console.log(productosIndex)
-       localStorage.setItem("miCarrito",JSON.stringify(miCarrito))
-       console.log(miCarrito)
-      //  alert ("ok")
-       cargarProductosCarrito(miCarrito)
-    })
+                      ///ELIMINAR DE CARRITO
+                        btnEliminar.addEventListener("click", ()=>{
+                          let productosIndex = miCarrito.findIndex(element => element.id == idCarrito)
+                          miCarrito.splice( productosIndex, 1)
+                          console.log(productosIndex)
+                          localStorage.setItem("miCarrito",JSON.stringify(miCarrito))
+                          console.log(miCarrito)
+                          //  alert ("ok")
+                           cargarProductosCarrito(miCarrito)
+                       
+                          
+                          contadorCarrito.innerText = miCarrito.length
+                          // carritoCounter();
+
+                          if (miCarrito.length==0){
+                  
+                            botonCarrito.style.backgroundColor = " hwb(0 30% 69%)";
+                                  }
+                          
+
+                                  })
        
-    })
+    }) //FIN FOREACH
+    
+
+                  //BOTON FINALIZAR        
+                  botonFinalizarCompra.addEventListener("click", ()=>{
+                    
+                    if (miCarrito.length>=1){
+                  
+                      Swal.fire({
+                   
+                        icon: 'success',
+                        iconColor:`#198754`,
+                        timer:1500,
+                       confirmButtonColor:  '#212529',
+                       title:'Su compra fue realizada',
+                      
+                      
+                          })
+                         
+                           localStorage.removeItem("miCarrito")  
+                          
+                  
+                          contadorCarrito.innerText ="0"
+                          //  carritoCounter();
+                          botonCarrito.style.backgroundColor = " hwb(0 30% 69%)";
+
+                         
+                        }
+
+                              else  {
+                                Swal.fire({
+                                    icon: 'error',
+                                    iconColor: '#198754',
+                                    timer:1500,
+                                    confirmButtonColor:  '#212529',
+                                    text: 'No posee productos en el carrito',
+                                })
+                              }
+                              
+                              
+                              })
+                             
     totalCarrito(array) /// Le asignamos el array del carrito
+    
     }
+
 // FIN-FUNCION-PARA CARGAR ELEMENTOS AL CARRITO///////
 
 
-   
 
     ///FUNCION CALCULAR TOTAL CARRITO/
+    let parrafoCompra = document.getElementById('precioTotal')
     function totalCarrito (array){
       let acumCompra = 0
       
       acumCompra = array.reduce((acumCompra,productoCarrito)=>{
         return acumCompra + productoCarrito.precio}, 0)////EMPIEZA DESDE 0
 
-    acumCompra == 0?  parrafoCompra.innerHTML = `<strong>Tu carrito en este momento está vacío.</strong>`: parrafoCompra.innerHTML = `<strong>El total de la compra es: $${acumCompra}</strong>`
+    acumCompra == 0?  parrafoCompra.innerHTML = `<strong>No hay productos en tu carrito.</strong>`: parrafoCompra.innerHTML = `<strong>Total de su compra: $${acumCompra}</strong>`
     
     
     } 
@@ -213,4 +287,5 @@ function agregarCarrito(array){
       divFechaHoy.innerHTML= `${fecha}`
       
 
+      
        mostrarCatalogo(deposito)

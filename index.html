@@ -16,7 +16,7 @@
 
     <title>EL Baron de la Cerveza</title>
   </head>
-  <body class="container-fluid  pe-0 ps-0 img-fluid fondoBody">
+  <body  class="container-fluid  pe-0 ps-0 img-fluid fondoBody">
     <!-- Inicio del menu -->
     <header>
       
@@ -42,7 +42,7 @@
                   
         
                   <li className="nav-item">
-                    <a id="botonCarrito" data-bs-toggle="modal" data-bs-target="#idModal" class="btn  btnCarrito"><i class="fas fa-shopping-cart fa-2x "id="iconoCarrito"></i></a>
+                    <a id="botonCarrito" data-bs-toggle="modal" data-bs-target="#idModal" class="btn btnCarrito"><i class="fas fa-shopping-cart fa-2x "id="iconoCarrito"></i><span id="contadorCarrito">0</span></a>
                   </li>
                 </ul>
         
@@ -66,7 +66,7 @@
                         <button id="btnBuscarT" class="btn btn-outline-success me-2 bg-dark "  type="submit" type="button" name="enviar"value="Buscar"> Buscar </button>
                         <!-- Agregando type="submit"  al Button, me permitio realizar la busqueda apretando el btn o con Enter-->
                         <!-- <input  id="btnBuscarT" type="submit" class="btn btn-outline-success me-2 bg-dark " type="button"  value="Buscar"></input>. -->
-                        <input id="imputCerveza" class="form-control me-2  " type="search"   placeholder="Ingrese tipo/variedad de cerveza" aria-label="Search" style=" width: 326px;" >
+                        <input id="imputCerveza" class="form-control me-2  " type="search"  placeholder="Ingrese tipo/variedad de cerveza" aria-label="Search" style=" width: 326px;" >
                     </form>
                   </div>
 
@@ -87,23 +87,26 @@
           <!--Modal Carrito-->
 
           
-            <div class="modal fade "  id="idModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog ">
-                <div class="modal-content  ">
+            <div class="modal fade   "  id="idModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-xl d-flex justify-content-center">
+                <div class="modal-content ">
                   
                       <div class="modal-header ">
                         <h5 class="modal-title" id="exampleModalLabel">Carrito de Compras</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
 
+                          <div   class="modal-body " id="modalCarrito">
 
-                          <div  class=" modal-body" id="modal-body"></div>   <!-- //en js lo tomo con document.getlEmentbyId modalBody para imprimir la plantilla del carrito-->
+                            
+                          </div>   
+                          <!-- //en js lo tomo con document.getlEmentbyId modalBody para imprimir la plantilla del carrito-->
 
                               <div class="row ml-ato"> <p id="precioTotal"></p> </div>
 
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                    <button type="button" data-bs-dismiss="modal" class="btn btn-success" id="botonFinalizarCompra">Finalizar Compra</button>
+                                    <button type="button"  data-bs-dismiss="modal" class="btn btn-success" id="botonFinalizarCompra">Finalizar Compra</button>
                                  </div>
                 </div>
               </div>
@@ -111,13 +114,16 @@
           
           <!--Modal CARRITO-->
 
+
+          <!-- Full screen modal -->
+
+
     </main>
 
 
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"crossorigin="anonymous"></script>
     
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>    -->
     <!-- Sweet alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Tastify -->
@@ -126,11 +132,6 @@
     <script src="https://cdn.jsdelivr.net/npm/luxon@2.3.0/build/global/luxon.min.js"></script>
     <script src="./assets/javaScript/class.js"></script> 
      <script src="./assets/javaScript/main.js"></script>
-    <!-- <!- <script src="./assets/javaScript/class.js"></script> -->
-    <!-- <script src="class.js"></script>
-    <script src="main.js"></script> -->
-    <!-- <script src="./assets/img/HeinekenLager473.jpg"></script> -->
-
 
   </body>
 <footer></footer>
