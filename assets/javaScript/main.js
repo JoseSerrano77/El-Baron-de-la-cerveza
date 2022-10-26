@@ -66,11 +66,9 @@ function mostrarCatalogo(array){
       } 
       else{
         
-        //  for (let tipoEncontrado of buscarCerv) {
-          
-          //  tipoEncontrado.infoCerveza();///////se muestra en consola///
+       
           mostrarCatalogo(buscarCerv)
-        //  }
+        
         
       }
       }
@@ -221,20 +219,20 @@ let modalBody = document.getElementById("modalCarrito")
                    
                         icon: 'success',
                         iconColor:`#198754`,
-                        timer:1500,
+                        //  timer:3000,
                        confirmButtonColor:  '#212529',
                        title:'Su compra fue realizada',
                       
                       
                           })
-                         
-                           localStorage.removeItem("miCarrito")  
                           
-                  
+                            localStorage.removeItem("miCarrito")  
+                           location.reload()
                           contadorCarrito.innerText ="0"
                           //  carritoCounter();
                           botonCarrito.style.backgroundColor = " hwb(0 30% 69%)";
-
+                         
+                          
                          
                         }
 
@@ -260,14 +258,13 @@ let modalBody = document.getElementById("modalCarrito")
 
 
     ///FUNCION CALCULAR TOTAL CARRITO/
-    let parrafoCompra = document.getElementById('precioTotal')
-    function totalCarrito (array){
-      let acumCompra = 0
+        let parrafoCompra = document.getElementById('precioTotal')
+        function totalCarrito (array){
+        let acumCompra = 0
       
-      acumCompra = array.reduce((acumCompra,productoCarrito)=>{
+        acumCompra = array.reduce((acumCompra,productoCarrito)=>{
         return acumCompra + productoCarrito.precio}, 0)////EMPIEZA DESDE 0
-
-    acumCompra == 0?  parrafoCompra.innerHTML = `<strong>No hay productos en tu carrito.</strong>`: parrafoCompra.innerHTML = `<strong>Total de su compra: $${acumCompra}</strong>`
+        acumCompra == 0?  parrafoCompra.innerHTML = `<strong>No hay productos en tu carrito.</strong>`: parrafoCompra.innerHTML = `<strong>Total de su compra: $${acumCompra}</strong>`
     
     
     } 
@@ -275,7 +272,7 @@ let modalBody = document.getElementById("modalCarrito")
 
     
     //LUXON
-   const DateTime = luxon.DateTime 
+    const DateTime = luxon.DateTime 
     // console.log (DateTime)
     const fechaAhora = DateTime.now()
     console.log(fechaAhora)
@@ -287,5 +284,4 @@ let modalBody = document.getElementById("modalCarrito")
       divFechaHoy.innerHTML= `${fecha}`
       
 
-      
-       mostrarCatalogo(deposito)
+             mostrarCatalogo(deposito)
