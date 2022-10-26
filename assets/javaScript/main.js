@@ -220,6 +220,7 @@ let modalBody = document.getElementById("modalCarrito")
                         icon: 'success',
                         iconColor:`#198754`,
                         //  timer:3000,
+                        confirmButton: true,
                        confirmButtonColor:  '#212529',
                        title:'Su compra fue realizada',
                       
