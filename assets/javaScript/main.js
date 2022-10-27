@@ -215,39 +215,46 @@ let modalBody = document.getElementById("modalCarrito")
                     
                     if (miCarrito.length>=1){
                   
+                              
                       Swal.fire({
-                   
-                        icon: 'success',
-                        iconColor:`#198754`,
-                        //  timer:3000,
-                        confirmButton: true,
-                       confirmButtonColor:  '#212529',
-                       title:'Su compra fue realizada',
-                      
-                      
-                          })
-                          
-                            localStorage.removeItem("miCarrito")  
-                           location.reload()
-                          contadorCarrito.innerText ="0"
-                          //  carritoCounter();
-                          botonCarrito.style.backgroundColor = " hwb(0 30% 69%)";
-                         
-                          
-                         
-                        }
-
-                              else  {
-                                Swal.fire({
-                                    icon: 'error',
-                                    iconColor: '#198754',
-                                    timer:1500,
-                                    confirmButtonColor:  '#212529',
-                                    text: 'No posee productos en el carrito',
-                                })
+                        title: '¿Desea finalizar su compra?',
+                        icon: 'info',
+                        iconColor: '#198754',
+                        showCancelButton: true,
+                        confirmButtonText: 'Si',
+                        cancelButtonText: 'No',
+                        confirmButtonColor: '#212529',
+                        cancelButtonColor: 'red',
+                    }).then((resultado)=>{
+                              if(resultado.isConfirmed){
+                                  
+                                  miCarrito = []
+                                  localStorage.removeItem("miCarrito")
+                                  contadorCarrito.innerText ="0"
+                                   botonCarrito.style.backgroundColor = " hwb(0 30% 69%)";
+                                  cargarProductosCarrito(miCarrito)
+                                  
+                                  
+                                  Swal.fire({
+                                  icon: 'success',
+                              iconColor:`#198754`,
+                               timer:2500,
+                            confirmButtonColor:  '#212529',
+                            title:'Su compra fue realizada',
+                                  })        
                               }
-                              
-                              
+                                  else{
+                                      Swal.fire({
+                                          title: 'Compra no realizada',
+                                          icon: 'info',
+                                          iconColor:`#198754`,
+                                          text: `Gracias por su compra.`,
+                                          confirmButtonColor: '#212529',
+                                          timer:2500
+                                      })
+                                  }
+                    })
+                  } // FIN IF miCarrito.lenght
                               })
                              
     totalCarrito(array) /// Le asignamos el array del carrito
